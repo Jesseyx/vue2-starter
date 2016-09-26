@@ -14,3 +14,36 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Api Routes
+|--------------------------------------------------------------------------
+*/
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1', function ($api) {
+    $api->group([
+        'namespace' => 'App\Http\ApiControllers',
+    ], function ($api) {
+        $api->post('/login', 'AuthController@login');
+        $api->post('/register', 'AuthController@register');
+    });
+
+    $api->group([
+        'namespace' => 'App\Http\ApiControllers',
+        'middleware' => 'jwt.auth',
+    ], function ($api) {
+        $api->get('/me', 'AuthController@me');
+
+        $api->group([
+            'prefix' => 'dog',
+        ], function ($api) {
+            $api->get('/', 'DogsController@index');
+            $api->get('/{id}', 'DogsController@show');
+            $api->post('/', 'DogsController@create');
+            $api->put('/edit/{id}', 'DogsController@edit');
+            $api->delete('/{id}', 'DogsController@destroy');
+        });
+    });
+});
