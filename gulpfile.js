@@ -1,5 +1,7 @@
 var elixir = require('laravel-elixir');
 
+require('laravel-elixir-vueify');
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -12,5 +14,12 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
+    mix.browserify('main.js');
     mix.sass('app.scss');
+    mix.copy('./node_modules/bootstrap-sass/assets/fonts', './public/fonts');
+    mix.copy('./resources/assets/js/assets', './public/assets');
+    mix.browserSync({
+        // your app urls
+        proxy: 'http://localhost:8000'
+    });
 });
