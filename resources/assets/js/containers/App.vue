@@ -8,7 +8,7 @@
     </div>
 </template>
 
-<style lang="scss">
+<style lang="sass">
 
 </style>
 

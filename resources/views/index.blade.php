@@ -7,6 +7,6 @@
 </head>
 <body>
     <div id="app"></div>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="http://localhost:8080/js/main.js"></script>
 </body>
 </html>

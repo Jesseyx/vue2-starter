@@ -46,7 +46,7 @@
     </nav>
 </template>
 
-<style lang="scss">
+<style lang="sass">
     .navbar {
         .navbar-header {
             font-weight: 300;
