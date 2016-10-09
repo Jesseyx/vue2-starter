@@ -31,9 +31,13 @@ export default (router) => {
             auth: true,
             component: resolve => resolve(Dog),
             subRoutes: {
-                'index': {
+                index: {
                     name: 'index',
                     component: resolve => resolve(Index),
+                },
+                create: {
+                    name: 'create',
+                    component: resolve => resolve(Create),
                 },
             },
         },
