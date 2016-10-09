@@ -2,18 +2,18 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">{{ logo }}</a>
+                <a class="navbar-brand" href="#" v-link="{path: '/'}">{{ logo }}</a>
             </div>
 
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="#" v-link="{name: 'home', 'activeClass': 'active'}">Home</a></li>
                     <li><a href="#">Dog</a></li>
                 </ul>
 
                 <div class="nav navbar-nav navbar-right">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Login</a></li>
+                        <li><a href="#" v-link="{name:'login', 'activeClass': 'active'}">Login</a></li>
                         <li><a href="#">Register</a></li>
                     </ul>
 
@@ -89,6 +89,7 @@
         data() {
             return {
                 logo: 'Laravel & Vue.js',
+                show: false,
             }
         },
     };

@@ -3,7 +3,7 @@
         <c-header></c-header>
         <br>
         <div class="container">
-
+            <router-view></router-view>
         </div>
     </div>
 </template>
@@ -23,5 +23,20 @@
         },
 
         store,
+
+        vuex: {
+
+        },
+
+        ready() {
+            let token = localStorage.getItem('jwt-token');
+            if (token !== null && token !== 'undefined') {
+                this.$http.get('/api/me', {token}).then((res) => {
+                    console.log(res);
+                }, (res) => {
+                    console.log(res);
+                });
+            }
+        }
     };
 </script>
