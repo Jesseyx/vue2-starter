@@ -1,6 +1,8 @@
 import Home from './containers/Home.vue';
 import Auth from './containers/Auth.vue';
 import Login from './components/Auth/Login.vue';
+import Dog from './containers/Dog.vue';
+import Index from './components/Dog/Index.vue';
 
 export default (router) => {
     router.map({
@@ -16,6 +18,22 @@ export default (router) => {
                     name: 'login',
                     guest: true,
                     component: resolve => resolve(Login),
+                },
+                register: {
+                    name: 'register',
+                    guest: true,
+                    component: resolve => resolve(Register),
+                },
+            },
+        },
+        '/dog': {
+            name: 'dog',
+            auth: true,
+            component: resolve => resolve(Dog),
+            subRoutes: {
+                'index': {
+                    name: 'index',
+                    component: resolve => resolve(Index),
                 },
             },
         },
@@ -33,4 +51,4 @@ export default (router) => {
 
         next();
     });
-}
+};

@@ -2,37 +2,37 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#" v-link="{path: '/'}">{{ logo }}</a>
+                <a class="navbar-brand" href="#" v-link="{ path: '/' }">{{ logo }}</a>
             </div>
 
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#" v-link="{name: 'home', 'activeClass': 'active'}">Home</a></li>
-                    <li><a href="#">Dog</a></li>
+                    <li><a href="#" v-link="{ name: 'home', 'activeClass': 'active' }">Home</a></li>
+                    <li><a href="#" v-link="{ name: 'dog', 'activeClass': 'active' }" v-if="getAuth">Dog</a></li>
                 </ul>
 
                 <div class="nav navbar-nav navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#" v-link="{name:'login', 'activeClass': 'active'}">Login</a></li>
-                        <li><a href="#">Register</a></li>
+                    <ul class="nav navbar-nav" v-if="!getAuth">
+                        <li><a href="#" v-link="{ name: 'login', 'activeClass': 'active' }">Login</a></li>
+                        <li><a href="#" v-link="{ name: 'register', 'activeClass': 'active' }">Register</a></li>
                     </ul>
 
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav" v-else>
                         <li class="dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
-                                getName <span class="caret"></span>
+                            <a class="dropdown-toggle" href="javascript: void(0);" @click="toggle">
+                                {{ getName }} <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu" :class="{ show: show }">
                                 <li class="dropdown-header">Settings</li>
                                 <li>
-                                    <a>
+                                    <a v-link="{ path: '/auth/profile', 'activeClass': 'active' }">
                                         <i class="glyphicon glyphicon-user"></i>
                                         &nbsp;Your profile
                                     </a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="javascript:void(0);">
+                                    <a href="javascript: void(0);" @click="logout">
                                         <i class="glyphicon glyphicon-log-out"></i>
                                         &nbsp;Logout
                                     </a>
@@ -85,11 +85,27 @@
 </style>
 
 <script>
+    import { getAuth, getName } from '../vuex/getters.js';
+
     export default {
         data() {
             return {
                 logo: 'Laravel & Vue.js',
                 show: false,
+            }
+        },
+        methods: {
+            toggle() {
+                this.show = !this.show;
+            },
+            logout() {
+                console.log('Logout');
+            },
+        },
+        vuex: {
+            getters: {
+                getAuth,
+                getName,
             }
         },
     };
