@@ -58,7 +58,7 @@
         border-radius: 0;
         .panel-body {
             padding: 0;
-            .list-group{
+            .list-group {
                 margin-bottom: 0;
 
                 .list-group-item {

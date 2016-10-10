@@ -86,27 +86,29 @@
 
 <script>
     import { getAuth, getName } from '../vuex/getters.js';
+    import { logout } from '../vuex/actions';
 
     export default {
         data() {
             return {
                 logo: 'Laravel & Vue.js',
                 show: false,
-            }
+            };
         },
         methods: {
             toggle() {
                 this.show = !this.show;
             },
             logout() {
-                console.log('Logout');
+                logout(this.$store);
+                this.$route.router.go({ name: 'login' });
             },
         },
         vuex: {
             getters: {
                 getAuth,
                 getName,
-            }
+            },
         },
     };
 </script>

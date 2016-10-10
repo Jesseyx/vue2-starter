@@ -11,5 +11,12 @@ export default {
 
     [VALIDATE_ERROR]: (state, errors) => {
         state.validate_errors = errors;
-    }
+    },
+
+    [LOGOUT]: (state) => {
+        state.name = '';
+        state.token = '';
+        state.authenticated = false;
+        localStorage.removeItem('jwt-token');
+    },
 }
