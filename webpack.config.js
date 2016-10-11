@@ -22,9 +22,17 @@ module.exports = {
                 exclude: /node_modules|vue\/dist|vue-router\/|vue-loader\/|vue-hot-reload-api\//,
                 test: /\.js$/,
                 loader: 'babel',
-            }
-        ]
-    }
+            },
+            {
+                test: /\.scss$/,
+                loaders: ['style', 'css', 'postcss', 'sass'],
+            },
+            {
+                test: /\.(svg|eot|woff2|woff|ttf)$/,
+                loader: 'file?emitFile=false&name=../fonts/bootstrap/[name].[ext]',
+            },
+        ],
+    },
 };
 
 if (process.env.NODE_ENV === 'production') {

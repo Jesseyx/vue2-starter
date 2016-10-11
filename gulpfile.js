@@ -1,25 +1,13 @@
-var elixir = require('laravel-elixir');
+var gulp = require('gulp');
+var del = require('del');
 
-require('laravel-elixir-vueify');
-
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
-
-elixir(function(mix) {
-    mix.browserify('main.js');
-    mix.sass('app.scss');
-    mix.copy('./node_modules/bootstrap-sass/assets/fonts', './public/fonts');
-    mix.copy('./resources/assets/js/assets', './public/assets');
-    mix.browserSync({
-        // your app urls
-        proxy: 'http://localhost:8000'
-    });
+gulp.task('clean', function () {
+    return del('./public/fonts');
 });
+
+gulp.task('fonts', ['clean'], function () {
+    return gulp.src('node_modules/bootstrap-sass/assets/fonts/*/**')
+        .pipe(gulp.dest('./public/fonts'));
+});
+
+gulp.task('default', ['fonts']);

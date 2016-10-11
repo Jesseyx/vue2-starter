@@ -1,3 +1,6 @@
+// load css
+import 'bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
 import Vue from 'vue';
 import Router from 'vue-router';
 import Resource from 'vue-resource';
