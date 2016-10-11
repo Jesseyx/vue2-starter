@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "laravel-vue-start-kit",
+  "name": "laravel-vue-starter",
   "version": "1.0.0",
   "scripts": {
     "dev": "gulp && webpack-dev-server --inline --hot --no-info --content-base public/",
