@@ -1,5 +1,5 @@
 <template>
-    <div class="alert alert-{{ type || 'success' }}" v-if="show">
+    <div :class="'alert alert-' + type || 'success'" v-if="show">
         <span class="glyphicon glyphicon-exclamation-sign"></span>
         <button type="button" class="close" @click="close">
             <span>&times;</span>

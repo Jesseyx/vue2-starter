@@ -28,8 +28,6 @@
 </style>
 
 <script>
-    import { logout } from '../../vuex/actions';
-
     export default {
         data() {
             return {
@@ -39,15 +37,15 @@
                 email: '',
             };
         },
-        ready() {
+        created() {
             let token = localStorage.getItem('jwt-token');
             this.$http.get(`/api/me?token=${token}`).then((response) => {
                 this.id = response.data.user.id;
                 this.name = response.data.user.name;
                 this.email = response.data.user.email;
             }, (response) => {
-                logout(this.$store);
-                this.$route.router.go({ name: 'login' });
+                this.$store.dispatch('logout');
+                this.$route.router.push({ name: 'login' });
             });
         },
     };

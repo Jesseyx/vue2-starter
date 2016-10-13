@@ -2,10 +2,11 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import mutations from './mutations';
-import middlewares from './middlewares';
+import * as actions from './actions';
+import * as getters from './getters';
+import plugins from './plugins';
 
-/* register plugin */
-/* http://vuex.vuejs.org/zh-cn/ */
+/* register plugin. http://vuex.vuejs.org/zh-cn/ */
 Vue.use(Vuex);
 
 const state = {
@@ -15,9 +16,10 @@ const state = {
     validate_errors: {},
 };
 
-/* eslint-disable no-new */
 export default new Vuex.Store({
     state,
     mutations,
-    middlewares,
+    actions,
+    getters,
+    plugins,
 });

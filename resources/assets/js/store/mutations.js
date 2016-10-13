@@ -2,7 +2,7 @@ import { LOGIN, LOGOUT, VALIDATE_ERROR } from './mutation-types';
 
 /* eslint-disable no-param-reassign */
 export default {
-    [LOGIN]: (state, name, token) => {
+    [LOGIN]: (state, { name, token }) => {
         state.name = name;
         state.token = token;
         state.authenticated = true;

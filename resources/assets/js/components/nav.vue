@@ -5,48 +5,48 @@
         <div class="panel-body">
             <ul class="list-group" v-if="is('home')">
                 <li class="list-group-item">
-                    <a href="#" v-link="{ name: 'welcome', 'activeClass': 'active' }">
+                    <router-link :to="{ name: 'welcome' }" active-class="active">
                         <span class="glyphicon glyphicon-menu-hamburger"></span>
                         &emsp;Welcome
-                    </a>
+                    </router-link>
                 </li>
 
                 <li class="list-group-item">
-                    <a href="#" v-link="{ name: 'about', 'activeClass': 'active' }">
+                    <router-link :to="{ name: 'about' }" active-class="active">
                         <span class="glyphicon glyphicon-eye-open"></span>
                         &emsp;About me
-                    </a>
+                    </router-link>
                 </li>
             </ul>
 
             <ul class="list-group" v-if="is('auth')">
                 <li class="list-group-item">
-                    <a href="#" v-link="{ name: 'login', 'activeClass': 'active' }">
+                    <router-link :to="{ name: 'login' }" active-class="active">
                         <span class="glyphicon glyphicon-log-in"></span>
                         &emsp;Login
-                    </a>
+                    </router-link>
                 </li>
 
                 <li class="list-group-item">
-                    <a href="#" v-link="{ name: 'register', 'activeClass': 'active' }">
+                    <router-link :to="{ name: 'register' }" active-class="active">
                         <span class="glyphicon glyphicon-send"></span>
                         &emsp;Register
-                    </a>
+                    </router-link>
                 </li>
             </ul>
 
             <ul class="list-group" v-if="is('dog')">
                 <li class="list-group-item">
-                    <a href="#" v-link="{ name: 'index', 'activeClass': 'active' }">
+                    <router-link :to="{ name: 'index' }" active-class="active">
                         <span class="glyphicon glyphicon-menu-hamburger"></span>
                         &emsp;All Dog
-                    </a>
+                    </router-link>
                 </li>
                 <li class="list-group-item">
-                    <a href="#" v-link="{ name: 'create', 'activeClass': 'active' }">
+                    <router-link :to="{ name: 'create' }" active-class="active">
                         <span class="glyphicon glyphicon-copyright-mark"></span>
                         &emsp;Create Dog
-                    </a>
+                    </router-link>
                 </li>
             </ul>
         </div>

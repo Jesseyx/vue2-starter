@@ -13,26 +13,21 @@
 
 <script>
     import cHeader from '../components/Header.vue';
-    import store from '../vuex/store';
-    import { me, logout } from '../vuex/actions';
 
     export default {
         components: {
             cHeader,
         },
-        store,
-        vuex: {
-            actions: {
-                me, logout,
-            },
-        },
-        ready() {
+        created() {
             let token = localStorage.getItem('jwt-token');
             if (token !== null && token !== 'undefined') {
                 this.$http.get('/api/me', { params: { token } }).then((response) => {
-                    me(store, response.data.user.name, token);
+                    this.$store.dispatch('me', {
+                        name: response.data.user.name,
+                        token,
+                    });
                 }, (response) => {
-                    logout(store);
+                    this.$store.dispatch('logout');
                 });
             }
         },

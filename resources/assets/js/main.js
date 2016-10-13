@@ -2,23 +2,19 @@
 import 'bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 
 import Vue from 'vue';
-import Router from 'vue-router';
 import Resource from 'vue-resource';
 
-import routes from './routes';
+import router from './router';
+import store from './store';
 
 import App from './containers/App.vue';
 
 /* register plugin */
-Vue.use(Router);
 Vue.use(Resource);
 
-/* register router */
-/* eslint-disable no-new */
-const router = new Router();
-
-/* http://router.vuejs.org/zh-cn/index.html */
-routes(router);
-
-/* start app */
-router.start(App, '#app');
+/* http://router.vuejs.org/zh-cn/essentials/getting-started.html */
+const app = new Vue({
+    router,
+    store,
+    render: h => h(App),
+}).$mount('#app');

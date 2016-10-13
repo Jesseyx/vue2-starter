@@ -9,7 +9,7 @@
 
             <form
                 class="form-horizontal col-md-10 col-md-offset-1"
-                @submit.stop.prevent="register(this, name, email, password, password_confirmation)"
+                @submit.stop.prevent="register"
             >
                 <div class="form-group">
                     <span class="col-md-4 control-label">Name</span>
@@ -58,9 +58,8 @@
 </style>
 
 <script>
+    import { mapGetters } from 'vuex';
     import Alert from '../Alert.vue';
-    import { getValidateError } from '../../vuex/getters';
-    import { register } from '../../vuex/actions';
 
     export default {
         data() {
@@ -75,12 +74,17 @@
         components: {
             Alert,
         },
-        vuex: {
-            actions: {
-                register,
-            },
-            getters: {
-                getValidateError,
+        computed: {
+            ...mapGetters(['getValidateError']),
+        },
+        methods: {
+            register() {
+                this.$store.dispatch('register', {
+                    name: this.name,
+                    email: this.email,
+                    password: this.password,
+                    password_confirmation: this.password_confirmation,
+                });
             },
         },
     };
