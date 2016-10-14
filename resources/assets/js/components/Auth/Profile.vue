@@ -45,7 +45,7 @@
                 this.email = response.data.user.email;
             }, (response) => {
                 this.$store.dispatch('logout');
-                this.$route.router.push({ name: 'login' });
+                this.$router.push({ name: 'login' });
             });
         },
     };
