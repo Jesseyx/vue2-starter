@@ -19,9 +19,12 @@ const routes = [
         component: resolve => resolve(Home),
         children: [
             {
+                path: '',
+                component: resolve => resolve(Welcome),
+            },
+            {
                 path: 'welcome',
                 name: 'welcome',
-                alias: '/',
                 component: resolve => resolve(Welcome),
             },
             {
@@ -37,9 +40,12 @@ const routes = [
         component: resolve => resolve(Auth),
         children: [
             {
+                path: '',
+                component: resolve => resolve(Login),
+            },
+            {
                 path: 'login',
                 name: 'login',
-                alias: '/',
                 guest: true,
                 component: resolve => resolve(Login),
             },
@@ -64,9 +70,12 @@ const routes = [
         component: resolve => resolve(Dog),
         children: [
             {
+                path: '',
+                component: resolve => resolve(Index),
+            },
+            {
                 path: 'index',
                 name: 'index',
-                alias: '/',
                 component: resolve => resolve(Index),
             },
             {

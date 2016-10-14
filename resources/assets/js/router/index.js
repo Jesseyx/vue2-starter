@@ -8,6 +8,7 @@ Vue.use(Router);
 
 /* register router */
 const router = new Router({
+    // mode: 'history',
     routes,
 });
 
