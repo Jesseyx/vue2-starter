@@ -96,7 +96,7 @@
         props: ['nav'],
         methods: {
             is(nav) {
-                return this.nav === Nav;
+                return this.nav === nav;
             },
         },
     };
