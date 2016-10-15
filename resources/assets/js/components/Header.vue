@@ -2,26 +2,26 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <router-link class="navbar-brand" to="/" active-class="active">{{ logo }}</router-link>
+                <router-link class="navbar-brand" to="/">{{ logo }}</router-link>
             </div>
 
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <router-link :to="{ name: 'home' }" active-class="active">Home</router-link>
+                        <router-link :to="{ name: 'home' }">Home</router-link>
                     </li>
                     <li>
-                        <router-link :to="{ name: 'dog' }" active-class="active" v-if="getAuth">Dog</router-link>
+                        <router-link :to="{ name: 'dog' }" v-if="getAuth">Dog</router-link>
                     </li>
                 </ul>
 
                 <div class="nav navbar-nav navbar-right">
                     <ul class="nav navbar-nav" v-if="!getAuth">
                         <li>
-                            <router-link :to="{ name: 'login' }" active-class="active">Login</router-link>
+                            <router-link :to="{ name: 'login' }">Login</router-link>
                         </li>
                         <li>
-                            <router-link :to="{ name: 'register' }" active-class="active">Register</router-link>
+                            <router-link :to="{ name: 'register' }">Register</router-link>
                         </li>
                     </ul>
 
@@ -33,7 +33,7 @@
                             <ul class="dropdown-menu" :class="{ show: show }">
                                 <li class="dropdown-header">Settings</li>
                                 <li>
-                                    <router-link :to="{ path: '/auth/profile' }" active-class="active">
+                                    <router-link :to="{ name: 'profile' }">
                                         <i class="glyphicon glyphicon-user"></i>
                                         &nbsp;Your profile
                                     </router-link>
@@ -93,7 +93,7 @@
 </style>
 
 <script>
-    import { mapActions, mapGetters } from 'vuex'
+    import { mapGetters } from 'vuex'
 
     export default {
         data() {

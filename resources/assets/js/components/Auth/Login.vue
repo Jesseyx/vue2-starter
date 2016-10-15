@@ -7,7 +7,7 @@
                 <alert type="danger" :message="error"></alert>
             </div>
 
-            <form class="form-horizontal col-md-10 col-md-offset-1" @submit.stop.prevent="login({ clinet: this, email, password })">
+            <form class="form-horizontal col-md-10 col-md-offset-1" @submit.stop.prevent="login">
                 <div class="form-group">
                     <span class="col-md-4 control-label">Email</span>
                     <div class="col-md-8">

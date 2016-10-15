@@ -7,7 +7,7 @@
                 <alert type="danger" :message="error"></alert>
             </div>
 
-            <form class="form-horizontal col-md-10 col-md-offset-1" @submit.stop.prevent="createDog({ client: this, name, age })">
+            <form class="form-horizontal col-md-10 col-md-offset-1" @submit.stop.prevent="createDog">
                 <div class="form-group">
                     <span class="col-md-4 control-label">Dog Name</span>
                     <div class="col-md-8">

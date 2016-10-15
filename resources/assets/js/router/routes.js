@@ -14,12 +14,14 @@ import notFound from '../containers/Page404.vue';
 const routes = [
     {
         path: '/home',
-        name: 'home',
+        // default component see https://github.com/vuejs/vue-router/issues/777
+        // name: 'home',
         alias: '/',
         component: resolve => resolve(Home),
         children: [
             {
                 path: '',
+                name: 'home',
                 component: resolve => resolve(Welcome),
             },
             {
@@ -36,41 +38,42 @@ const routes = [
     },
     {
         path: '/auth',
-        name: 'auth',
         component: resolve => resolve(Auth),
         children: [
             {
                 path: '',
+                name: 'auth',
                 component: resolve => resolve(Login),
             },
             {
                 path: 'login',
                 name: 'login',
-                guest: true,
+                // see http://router.vuejs.org/zh-cn/advanced/meta.html
+                meta: { guest: true },
                 component: resolve => resolve(Login),
             },
             {
                 path: 'register',
                 name: 'register',
-                guest: true,
+                meta: { guest: true },
                 component: resolve => resolve(Register),
             },
             {
                 path: 'profile',
                 name: 'profile',
-                auth: true,
+                meta: { auth: true },
                 component: resolve => resolve(Profile),
             }
         ],
     },
     {
         path: '/dog',
-        name: 'dog',
         auth: true,
         component: resolve => resolve(Dog),
         children: [
             {
                 path: '',
+                name: 'dog',
                 component: resolve => resolve(Index),
             },
             {
