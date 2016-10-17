@@ -6,6 +6,6 @@ Homestead.json
 .env
 /.idea
 /public/js
-/public/js_v1
 /public/css
 /public/fonts
+/public/js_v1
