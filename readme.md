@@ -1,10 +1,10 @@
 ### laravel-vue-starter
 
-学习 Laravel 和 vue 开发的小 demo
+A demo to learn vuejs.
 
-> 快速启动
+> Quick Start the server
 
-1. `npm install && composer install`
+1. `composer install`
 
 2. `php artisan key:generate`
 
@@ -14,8 +14,16 @@
 
 5. `php artisan serve`
 
-6. `npm run dev` 
+> Quick Start Vuejs
 
-后端使用 laravel，dingo api 和 jwt-auth
+Note that the master branch corresponds to vue 1. If you want to use vue 2, switch to the v2 branch
 
-前端使用 vuejs，vuex，vue-router 和 vue-resource
+1. `npm install` 
+
+2. `npm run dev`
+
+Then start http://localhost:8000/
+
+The server side use laravel, dingo api and jwt-auth.
+
+The web side use vue, vuex, vue-router and vue-resource.
