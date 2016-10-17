@@ -1,6 +1,6 @@
 ### laravel-vue-starter
 
-A demo to learn vuejs.
+A demo to learn vuejs 2.
 
 > Quick Start the server
 
@@ -16,7 +16,7 @@ A demo to learn vuejs.
 
 > Quick Start Vuejs
 
-Note that the master branch corresponds to vue 1. If you want to use vue 2, switch to the v2 branch
+Note that the master branch corresponds to vue 2. If you want to use vue 1, switch to the v1 branch
 
 1. `npm install` 
 
@@ -26,4 +26,4 @@ Then start http://localhost:8000/
 
 The server side use laravel, dingo api and jwt-auth.
 
-The web side use vue, vuex, vue-router and vue-resource.
+The web side use vue 2, vuex 2, vue-router 2 and vue-resource.
