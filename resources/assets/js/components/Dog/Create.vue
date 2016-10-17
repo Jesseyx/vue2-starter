@@ -7,7 +7,7 @@
                 <alert type="danger" :message="error"></alert>
             </div>
 
-            <form class="form-horizontal col-md-10 col-md-offset-1" @submit.stop.prevent="createDog(this, name, age)">
+            <form class="form-horizontal col-md-10 col-md-offset-1" @submit.stop.prevent="createDog">
                 <div class="form-group">
                     <span class="col-md-4 control-label">Dog Name</span>
                     <div class="col-md-8">
@@ -38,9 +38,8 @@
 </style>
 
 <script>
+    import { mapGetters } from 'vuex';
     import Alert from '../Alert.vue';
-    import { getValidateError } from '../../vuex/getters';
-    import { createDog } from '../../vuex/actions';
 
     export default {
         data() {
@@ -53,12 +52,15 @@
         components: {
             Alert,
         },
-        vuex: {
-            actions: {
-                createDog,
-            },
-            getters: {
-                getValidateError,
+        computed: {
+            ...mapGetters(['getValidateError']),
+        },
+        methods: {
+            createDog() {
+                this.$store.dispatch('createDog', {
+                    name: this.name,
+                    age: this.age,
+                });
             },
         },
     };

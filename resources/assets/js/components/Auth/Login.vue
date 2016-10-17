@@ -7,7 +7,7 @@
                 <alert type="danger" :message="error"></alert>
             </div>
 
-            <form class="form-horizontal col-md-10 col-md-offset-1" @submit.stop.prevent="login(this, email, password)">
+            <form class="form-horizontal col-md-10 col-md-offset-1" @submit.stop.prevent="login">
                 <div class="form-group">
                     <span class="col-md-4 control-label">Email</span>
                     <div class="col-md-8">
@@ -49,9 +49,8 @@
 </style>
 
 <script>
+    import { mapGetters } from 'vuex';
     import Alert from '../Alert.vue';
-    import { login } from '../../vuex/actions.js';
-    import { getValidateError } from '../../vuex/getters.js';
 
     export default {
         data() {
@@ -64,12 +63,15 @@
         components: {
             Alert,
         },
-        vuex: {
-            actions: {
-                login,
-            },
-            getters: {
-                getValidateError,
+        computed: {
+            ...mapGetters(['getValidateError']),
+        },
+        methods: {
+            login() {
+                this.$store.dispatch('login', {
+                    email: this.email,
+                    password: this.password,
+                });
             },
         },
     };

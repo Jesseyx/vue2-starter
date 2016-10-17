@@ -2,19 +2,27 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#" v-link="{ path: '/' }">{{ logo }}</a>
+                <router-link class="navbar-brand" to="/">{{ logo }}</router-link>
             </div>
 
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#" v-link="{ name: 'home', 'activeClass': 'active' }">Home</a></li>
-                    <li><a href="#" v-link="{ name: 'dog', 'activeClass': 'active' }" v-if="getAuth">Dog</a></li>
+                    <li>
+                        <router-link :to="{ name: 'home' }">Home</router-link>
+                    </li>
+                    <li>
+                        <router-link :to="{ name: 'dog' }" v-if="getAuth">Dog</router-link>
+                    </li>
                 </ul>
 
                 <div class="nav navbar-nav navbar-right">
                     <ul class="nav navbar-nav" v-if="!getAuth">
-                        <li><a href="#" v-link="{ name: 'login', 'activeClass': 'active' }">Login</a></li>
-                        <li><a href="#" v-link="{ name: 'register', 'activeClass': 'active' }">Register</a></li>
+                        <li>
+                            <router-link :to="{ name: 'login' }">Login</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'register' }">Register</router-link>
+                        </li>
                     </ul>
 
                     <ul class="nav navbar-nav" v-else>
@@ -25,10 +33,10 @@
                             <ul class="dropdown-menu" :class="{ show: show }">
                                 <li class="dropdown-header">Settings</li>
                                 <li>
-                                    <a v-link="{ path: '/auth/profile', 'activeClass': 'active' }">
+                                    <router-link :to="{ name: 'profile' }">
                                         <i class="glyphicon glyphicon-user"></i>
                                         &nbsp;Your profile
-                                    </a>
+                                    </router-link>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
@@ -85,8 +93,7 @@
 </style>
 
 <script>
-    import { getAuth, getName } from '../vuex/getters.js';
-    import { logout } from '../vuex/actions';
+    import { mapGetters } from 'vuex'
 
     export default {
         data() {
@@ -95,19 +102,19 @@
                 show: false,
             };
         },
+        computed: {
+            ...mapGetters([
+                'getAuth',
+                'getName',
+            ]),
+        },
         methods: {
             toggle() {
                 this.show = !this.show;
             },
             logout() {
-                logout(this.$store);
-                this.$route.router.go({ name: 'login' });
-            },
-        },
-        vuex: {
-            getters: {
-                getAuth,
-                getName,
+                this.$store.dispatch('logout');
+                this.$router.push({ name: 'login' });
             },
         },
     };

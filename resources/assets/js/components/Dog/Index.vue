@@ -23,8 +23,8 @@
                         <td>{{ dog.age }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="#" v-link="{ name: 'edit', params: { id: dog.id } }">edit&nbsp;</a>
-                                <a href="javascript:void(0);" @click="deleteDog(this, dog.id)">&nbsp;delete</a>
+                                <router-link :to="{ name: 'edit', params: { id: dog.id } }"></router-link>
+                                <a href="javascript:void(0);" @click="deleteDog(dog.id)">&nbsp;delete</a>
                             </div>
                         </td>
                     </tr>
@@ -38,8 +38,8 @@
 </style>
 
 <script>
+    import { mapGetters } from 'vuex';
     import Alert from '../Alert.vue';
-    import { deleteDog } from '../../vuex/actions';
 
     export default {
         data() {
@@ -52,12 +52,14 @@
         components: {
             Alert,
         },
-        vuex: {
-            actions: {
-                deleteDog,
-            }
+        methods: {
+            deleteDog(id) {
+                this.$store.dispatch('deleteDog', {
+                    id,
+                });
+            },
         },
-        ready() {
+        created() {
             let token = localStorage.getItem('jwt-token');
             this.$http.get(`/api/dog?token=${token}`).then((response) => {
                 this.dogs = response.data.dogs;
