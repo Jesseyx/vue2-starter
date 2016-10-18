@@ -1,4 +1,4 @@
-### laravel-vue-starter
+### vue2-starter
 
 A demo to learn vuejs 2.
 
